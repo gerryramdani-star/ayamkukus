@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Ayam Kukus Priangan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --akp-green: #095C2B;
+      --akp-green-hover: #074721;
+      --apple-bg: #F5F5F7;
+      --apple-card: rgba(255, 255, 255, 0.88);
+      --apple-text-primary: #1D1D1F;
+      --apple-text-secondary: #6E6E73;
+      --apple-border: rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif;
+      background-color: var(--apple-bg);
+      color: var(--apple-text-primary);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Apple-grade surface elevation & glassmorphism */
+    .apple-card {
+      background: var(--apple-card);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border: 1px solid var(--apple-border);
+      box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.02),
+        0 10px 28px rgba(0, 0, 0, 0.04);
+      transition: 
+        transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .apple-card:hover {
+      background: #FFFFFF;
+      border-color: rgba(0, 0, 0, 0.11);
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 16px 36px rgba(0, 0, 0, 0.07);
+      transform: translateY(-1.5px);
+    }
+
+    .apple-card:active {
+      transform: scale(0.985);
+      transition-duration: 0.1s;
+    }
+
+    /* Primary Brand Button (WhatsApp / Direct Order) */
+    .apple-card-primary {
+      background: var(--akp-green);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 
+        0 4px 14px rgba(9, 92, 43, 0.18),
+        0 12px 32px rgba(9, 92, 43, 0.14);
+      transition: 
+        transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.2s ease;
+    }
+
+    .apple-card-primary:hover {
+      background: var(--akp-green-hover);
+      box-shadow: 
+        0 6px 18px rgba(9, 92, 43, 0.24),
+        0 16px 38px rgba(9, 92, 43, 0.18);
+      transform: translateY(-1.5px);
+    }
+
+    .apple-card-primary:active {
+      transform: scale(0.985);
+      transition-duration: 0.1s;
+    }
+
+    /* Subtle entrance animation */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center px-5 py-12 sm:py-20 selection:bg-[#095C2B] selection:text-white">
+
+  <!-- Spacer atas untuk keseimbangan optik vertikal -->
+  <div class="w-full" aria-hidden="true"></div>
+
+  <!-- Kontainer Utama -->
+  <main class="w-full max-w-[400px] mx-auto flex flex-col items-center animate-in">
+    
+    <!-- Identitas Brand / Logo -->
+    <header class="flex flex-col items-center text-center mb-10">
+      <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full shadow-[0_8px_28px_rgba(9,92,43,0.18)] bg-[#095C2B] flex items-center justify-center overflow-hidden mb-5 ring-1 ring-black/5">
+        <!-- Menampilkan logo dari file image_5313b6.png, dengan fallback vektor SVG jika gagal dimuat -->
+        <img 
+          src="image_5313b6.png" 
+          alt="Logo Ayam Kukus Priangan" 
+          class="w-full h-full object-cover"
+          onerror="this.style.display='none'; document.getElementById('akp-vector-logo').classList.remove('hidden');"
+        />
+        <svg 
+          id="akp-vector-logo" 
+          viewBox="0 0 500 500" 
+          class="hidden w-full h-full" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label="Logo Ayam Kukus Priangan"
+        >
+          <circle cx="250" cy="250" r="250" fill="#095C2B"/>
+          <!-- Siluet Jengger, Kepala, Pial, dan Leher Ayam Kukus Priangan -->
+          <g stroke="#FFFFFF" stroke-width="25" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Jengger (Comb) -->
+            <path d="M 240 162 C 195 155, 178 100, 182 65 C 202 88, 222 105, 245 108 C 242 82, 240 60, 242 40 C 262 60, 282 88, 298 112 C 300 94, 302 74, 305 60 C 335 88, 355 128, 344 172" />
+            <!-- Kepala, Paruh & Pial (Head, Beak & Wattle) -->
+            <path d="M 255 190 C 258 148, 305 142, 340 172 C 362 178, 378 192, 386 208 C 360 202, 336 212, 326 225 C 335 245, 355 278, 352 315 C 348 345, 315 352, 298 318 C 282 288, 250 238, 255 190 Z" />
+            <!-- Garis Punggung Leher (Back Neck Line) -->
+            <path d="M 262 156 C 195 198, 172 282, 138 355 C 118 395, 92 418, 66 435" />
+            <!-- Garis Tengah Leher (Inner Neck Curve) -->
+            <path d="M 140 352 C 165 402, 228 450, 275 495" />
+            <!-- Garis Dada (Chest Line) -->
+            <path d="M 282 288 C 308 355, 332 428, 340 490" />
+          </g>
+        </svg>
+      </div>
+
+      <h1 class="text-[22px] sm:text-[24px] font-semibold tracking-[-0.025em] text-[#1D1D1F]">
+        Ayam Kukus Priangan
+      </h1>
+      <p class="text-[14px] sm:text-[15px] text-[#6E6E73] font-normal tracking-[-0.01em] mt-1">
+        Kepulan Hangat, Rempah Memikat
+      </p>
+    </header>
+
+    <!-- Daftar Tombol Navigasi (Hanya 3 Tombol Sesuai Instruksi) -->
+    <nav class="w-full flex flex-col gap-3.5" aria-label="Tautan Pemesanan dan Lokasi">
+      
+      <!-- 1. Tombol Pesan di WhatsApp -->
+      <a 
+        id="link-whatsapp"
+        href="https://wa.me/6281234567890?text=Halo%20Ayam%20Kukus%20Priangan%2C%20saya%20ingin%20memesan%20menu%20AKP."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="apple-card-primary group w-full rounded-2xl p-4 sm:px-5 sm:py-4 flex items-center justify-between no-underline"
+      >
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+            <!-- Ikon WhatsApp Bersih -->
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.758.459 3.473 1.331 4.988L2 22l5.18-1.359c1.464.799 3.112 1.221 4.85 1.221h.004c5.515 0 9.966-4.452 9.966-9.969 0-2.663-1.037-5.168-2.92-7.052C17.198 2.958 14.693 2 12.031 2zm5.822 14.265c-.246.693-1.428 1.325-1.988 1.409-.51.077-1.156.109-1.868-.117-.432-.137-.986-.32-1.693-.625-2.979-1.286-4.925-4.286-5.074-4.485-.148-.199-1.211-1.611-1.211-3.073 0-1.462.766-2.181 1.038-2.478.273-.297.594-.372.792-.372.198 0 .396.002.569.01.183.009.427-.069.668.511.248.594.841 2.055.915 2.204.075.149.124.322.025.52-.099.198-.148.322-.297.495-.148.174-.312.388-.445.521-.149.148-.304.309-.131.606.173.297.769 1.269 1.651 2.055 1.135 1.011 2.091 1.325 2.388 1.473.297.149.47.124.644-.074.173-.198.742-.866.94-1.164.198-.297.396-.247.668-.148.273.099 1.733.817 2.03 0.965.297.149.495.223.569.347.075.124.075.718-.171 1.411z"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <span class="block text-[16px] font-semibold tracking-[-0.015em] text-white leading-snug">
+              Pesan via WhatsApp
+            </span>
+            <span class="block text-[13px] text-white/80 font-normal leading-tight mt-0.5">
+              Pesan langsung & reservasi meja
+            </span>
+          </div>
+        </div>
+        <svg class="w-4 h-4 text-white/70 transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7.5 4.5L13 10L7.5 15.5"/>
+        </svg>
+      </a>
+
+      <!-- 2. Tombol Pesan di GoFood -->
+      <a 
+        id="link-gofood"
+        href="https://gofood.co.id/id/bandung/restaurants?q=Ayam%20Kukus%20Priangan"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="apple-card group w-full rounded-2xl p-4 sm:px-5 sm:py-4 flex items-center justify-between no-underline"
+      >
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-xl bg-[#EE2737]/10 flex items-center justify-center shrink-0">
+            <!-- Ikon GoFood / Pesan Antar -->
+            <svg class="w-5 h-5 text-[#EE2737]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <span class="block text-[16px] font-semibold tracking-[-0.015em] text-[#1D1D1F] leading-snug">
+              Pesan di GoFood
+            </span>
+            <span class="block text-[13px] text-[#6E6E73] font-normal leading-tight mt-0.5">
+              Pengantaran cepat ke lokasimu
+            </span>
+          </div>
+        </div>
+        <svg class="w-4 h-4 text-[#86868B] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-[#1D1D1F] shrink-0" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7.5 4.5L13 10L7.5 15.5"/>
+        </svg>
+      </a>
+
+      <!-- 3. Tombol Lokasi Google Maps -->
+      <a 
+        id="link-maps"
+        href="https://www.google.com/maps/search/?api=1&query=Ayam+Kukus+Priangan+Dago+Bandung"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="apple-card group w-full rounded-2xl p-4 sm:px-5 sm:py-4 flex items-center justify-between no-underline"
+      >
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-xl bg-[#0071E3]/10 flex items-center justify-center shrink-0">
+            <!-- Ikon Pin Lokasi / Google Maps -->
+            <svg class="w-5 h-5 text-[#0071E3]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <span class="block text-[16px] font-semibold tracking-[-0.015em] text-[#1D1D1F] leading-snug">
+              Petunjuk Arah (Maps)
+            </span>
+            <span class="block text-[13px] text-[#6E6E73] font-normal leading-tight mt-0.5">
+              Dago, Kota Bandung
+            </span>
+          </div>
+        </div>
+        <svg class="w-4 h-4 text-[#86868B] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-[#1D1D1F] shrink-0" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7.5 4.5L13 10L7.5 15.5"/>
+        </svg>
+      </a>
+
+    </nav>
+  </main>
+
+  <!-- Footer Minimalis -->
+  <footer class="w-full text-center mt-12">
+    <p class="text-[12px] text-[#86868B] tracking-[-0.01em]">
+      &copy; 2026 Ayam Kukus Priangan
+    </p>
+  </footer>
+
+  <!-- Konfigurasi URL terpusat agar mudah diganti kapan saja -->
+  <script>
+    const AKP_LINKS = {
+      whatsapp: "https://wa.me/6281234567890?text=Halo%20Ayam%20Kukus%20Priangan%2C%20saya%20ingin%20memesan%20menu%20AKP.",
+      gofood: "https://gofood.co.id/id/bandung/restaurants?q=Ayam%20Kukus%20Priangan",
+      maps: "https://www.google.com/maps/search/?api=1&query=Ayam+Kukus+Priangan+Dago+Bandung"
+    };
+
+    document.getElementById("link-whatsapp").href = AKP_LINKS.whatsapp;
+    document.getElementById("link-gofood").href = AKP_LINKS.gofood;
+    document.getElementById("link-maps").href = AKP_LINKS.maps;
+  </script>
+</body>
+</html>
