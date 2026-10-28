@@ -4,6 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Ayam Kukus Priangan</title>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // GANTI TEKS DI BAWAH INI DENGAN PIXEL ID ASLI ANDA
+    fbq('init', '2530882210750425'); 
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2530882210750425&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Inisialisasi Pushlayer (dataLayer) untuk Google Analytics / GTM -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    // Jika Anda menggunakan Google Tag Manager (GTM), letakkan snippet script GTM Anda tepat di bawah baris ini
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -267,7 +294,7 @@
       <!-- 5. Tombol Lokasi -->
       <a 
         id="link-maps"
-        href="#"
+        href="https://maps.app.goo.gl/rvG1XeS7Rixe3Ya29"
         target="_blank"
         rel="noopener noreferrer"
         class="apple-card group w-full rounded-2xl p-4 sm:px-5 sm:py-4 flex items-center justify-between no-underline"
@@ -324,6 +351,34 @@
     document.getElementById("link-gofood").href = AKP_LINKS.gofood;
     document.getElementById("link-grabfood").href = AKP_LINKS.grabfood;
     document.getElementById("link-maps").href = AKP_LINKS.maps;
+
+    // --- SCRIPT PELACAKAN (TRACKING) EVENT KLIK ---
+    function trackAction(actionName, platform) {
+      // 1. Push ke dataLayer (Terekam di Google Analytics via GTM)
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'button_click',
+        'action_name': actionName,
+        'platform': platform
+      });
+
+      // 2. Trigger Event ke Meta Pixel
+      if (typeof fbq === 'function') {
+        // Memicu Custom Event, atau Anda bisa menggantinya dengan fbq('track', 'Lead');
+        fbq('trackCustom', 'ClickOutbound', {
+          action_name: actionName,
+          platform: platform
+        });
+      }
+    }
+
+    // Memasang deteksi klik pada masing-masing tombol
+    document.getElementById("link-wa-delivery").addEventListener("click", function() { trackAction('Pesan Delivery', 'WhatsApp'); });
+    document.getElementById("link-wa-reservasi").addEventListener("click", function() { trackAction('Reservasi Meja', 'WhatsApp'); });
+    document.getElementById("link-gofood").addEventListener("click", function() { trackAction('Pesan Online', 'GoFood'); });
+    document.getElementById("link-grabfood").addEventListener("click", function() { trackAction('Pesan Online', 'GrabFood'); });
+    document.getElementById("link-maps").addEventListener("click", function() { trackAction('Cek Lokasi', 'Google Maps'); });
+
   </script>
 </body>
 </html>
