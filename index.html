@@ -25,10 +25,14 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
 
-  <!-- Inisialisasi Pushlayer (dataLayer) untuk Google Analytics / GTM -->
+  <!-- Google tag (gtag.js) - Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DRHCSX87QM"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    // Jika Anda menggunakan Google Tag Manager (GTM), letakkan snippet script GTM Anda tepat di bawah baris ini
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DRHCSX87QM');
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -354,7 +358,17 @@
 
     // --- SCRIPT PELACAKAN (TRACKING) EVENT KLIK ---
     function trackAction(actionName, platform) {
-      // 1. Push ke dataLayer (Terekam di Google Analytics via GTM)
+      // 1. Kirim langsung ke Google Analytics 4 (GA4)
+      if (typeof gtag === 'function') {
+        gtag('event', 'cta_click', {
+          'action_name': actionName,
+          'platform': platform,
+          'event_category': 'Outbound CTA',
+          'event_label': actionName + ' - ' + platform
+        });
+      }
+
+      // 2. Push ke dataLayer (kompatibilitas cadangan)
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         'event': 'button_click',
@@ -362,7 +376,7 @@
         'platform': platform
       });
 
-      // 2. Trigger Event ke Meta Pixel
+      // 3. Trigger Event ke Meta Pixel
       if (typeof fbq === 'function') {
         // Memicu Custom Event, atau Anda bisa menggantinya dengan fbq('track', 'Lead');
         fbq('trackCustom', 'ClickOutbound', {
